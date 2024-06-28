@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostController;
 
-Route::resource('post', PostController::class);
-
 // Route::get('/test', [TestController::class, 'test'])->name('test');
 
 // Route::post('/post', [PostController::class, 'store'])->name('post.store');
@@ -19,14 +17,17 @@ Route::resource('post', PostController::class);
 //     Route::get('/post', [PostController::class, 'index'])->name('post.index');
 //     Route::get('/post/create', [PostController::class, 'create']);
 // // });
+Route::resource('post', PostController::class);
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [PostController::class, 'index'])
+    ->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
