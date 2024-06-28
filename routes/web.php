@@ -2,6 +2,23 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\PostController;
+
+Route::resource('post', PostController::class);
+
+// Route::get('/test', [TestController::class, 'test'])->name('test');
+
+// Route::post('/post', [PostController::class, 'store'])->name('post.store');
+// Route::get('/post/show/{post}', [PostController::class, 'show'])->name('post.show');
+// Route::get('/post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+// Route::patch('/post/{post}', [PostController::class, 'update'])->name('post.update');
+// Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
+// // Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::get('/post', [PostController::class, 'index'])->name('post.index');
+//     Route::get('/post/create', [PostController::class, 'create']);
+// // });
 
 Route::get('/', function () {
     return view('welcome');
